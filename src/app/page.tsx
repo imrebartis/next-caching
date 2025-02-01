@@ -1,7 +1,12 @@
-import { unstable_noStore } from 'next/cache'
+// import { cookies, headers } from 'next/headers'
+// import { useSearchParams } from 'next/navigation'
+
+export const dynamic = 'force-dynamic'
 
 export default function Home() {
-  unstable_noStore()
+  // headers()
+  // cookies()
+  // useSearchParams()
 
   console.log(`Rendering / ${new Date().toLocaleTimeString()}`)
   return (
