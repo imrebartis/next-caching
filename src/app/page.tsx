@@ -1,17 +1,17 @@
-// import { cookies, headers } from 'next/headers'
-// import { useSearchParams } from 'next/navigation'
+import { revalidatePath } from 'next/cache'
+import RevalidateHomeButton from './RevalidateHomeButton'
 
-export const dynamic = 'force-dynamic'
+async function onRevalidateHome() {
+  'use server'
+  revalidatePath('/')
+}
 
 export default function Home() {
-  // headers()
-  // cookies()
-  // useSearchParams()
-
   console.log(`Rendering / ${new Date().toLocaleTimeString()}`)
   return (
     <main>
       <div>{new Date().toLocaleTimeString()}</div>
+      <RevalidateHomeButton onRevalidateHome={onRevalidateHome} />
     </main>
   )
 }
