@@ -1,17 +1,16 @@
-import { revalidatePath } from 'next/cache'
-import RevalidateHomeButton from './RevalidateHomeButton'
+import Link from 'next/link'
+import Timer from './Timer'
 
-async function onRevalidateHome() {
-  'use server'
-  revalidatePath('/')
-}
+export const dynamic = 'force-dynamic'
 
 export default function Home() {
-  console.log(`Rendering / ${new Date().toLocaleTimeString()}`)
   return (
     <main>
-      <div>{new Date().toLocaleTimeString()}</div>
-      <RevalidateHomeButton onRevalidateHome={onRevalidateHome} />
+      <div>Time: {new Date().toLocaleTimeString()}</div>
+      <div>
+        <Link href='/sub-route'>Sub-Route</Link>
+      </div>
+      <Timer />
     </main>
   )
 }
